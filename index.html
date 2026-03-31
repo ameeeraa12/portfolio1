@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afreen Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Afreen</h1>
+        <p>BCA Student | Aspiring Web Developer | Creative Learner</p>
+    </header>
+
+    <section>
+        <h2>About Me</h2>
+        <p>
+            I am a BCA student with a strong interest in technology, web development, and building creative digital experiences.
+            I enjoy learning independently and exploring both frontend and backend development.
+        </p>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <p>Currently pursuing Bachelor of Computer Applications (BCA).</p>
+        <p>Interested in software development, UI design, and modern web technologies.</p>
+    </section>
+
+    <section>
+        <h2>Skills</h2>
+        <div class="skills">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Node.js</span>
+            <span>GitHub</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>Achievements</h2>
+        <p>Built my first full portfolio website using frontend and backend technologies.</p>
+        <p>Learning project deployment, GitHub workflow, and hosting independently.</p>
+    </section>
+
+    <section>
+        <h2>Goals</h2>
+        <p>
+            My goal is to improve my technical skills, build meaningful projects, and eventually create strong software solutions with both design and functionality.
+        </p>
+    </section>
+
+    <section>
+        <h2>Contact Me</h2>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <script>
+        const form = document.getElementById('contactForm');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const data = Object.fromEntries(new FormData(form).entries());
+
+            const res = await fetch('/contact', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+
+            const text = await res.text();
+            alert(text);
+        });
+    </script>
+
+</body>
+</html>
