@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 import sqlite3
+import os
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 @app.route('/')
 def home():
@@ -23,4 +24,6 @@ def submit():
 
     return "Message Saved Successfully!"
 
-app.run(debug=True)
+if _name_ == '_main_':
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
